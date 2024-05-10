@@ -1,0 +1,60 @@
+body{
+    height: 100vh;
+    background-image: url("../img/background\ login.jpg") ;
+    background-repeat:repeat-x;
+    background-size: contain;
+    /* background-position: center; */
+    background-attachment: fixed;
+}
+#chooseGameHeader{
+    justify-self: center;
+    font-size: 500%;
+    text-align: center;
+    margin-top: 30px;
+    font-family: papyrus;
+}
+#imgDiv{
+    display: flex;
+    justify-content: space-evenly;
+}
+.imgChoose:hover{
+    border: #82fd7b 20px solid ;
+}
+.imgChoose{
+    width: 250px;
+    height: 250px;
+    /* margin-right: 3%;
+    margin-left: 3%; */
+    border-style: solid;
+    border-color: chartreuse;
+    transition-duration: 0.7s;
+}
+
+@media screen and (max-width: 1000px){
+    body{
+        background-size: cover;
+    }
+}
+
+@media screen and (max-width: 600px){
+    #imgDiv{
+        flex-direction: column;
+        justify-content: center;
+    }
+    #chooseGameHeader{
+        font-size: 250%;
+        /* margin-bottom: 10%;
+        margin-top: 10%;
+        margin-left: 0%;
+        margin-right: 0%;
+        justify-content: center; */
+    }
+    .imgChoose{
+        /* width: 60%;
+        margin-right: 20%; */
+        margin-left: 20%;
+        margin-bottom: 5%;
+        
+    }
+}
+

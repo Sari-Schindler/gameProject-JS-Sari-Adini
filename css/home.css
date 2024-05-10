@@ -1,0 +1,59 @@
+body{
+    background-image: url("../images/נוף-משחק-גבעה-רקע-לילה-קליפ-ארט-וקטורי_csp47618701.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#headerHome{
+    display:flex;
+    background-color: #32c28a;
+    color: white;
+    justify-content:center;
+    font-size: 500%;
+    padding: 0%;
+    margin: 0%;
+    font-family: papyrus;
+}
+
+#imagesDiv{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+}
+.imagesHome{
+    margin: 20px, 0 , 20px, 20px;
+    width:45%;
+    height: 35%;
+    padding: 10px;
+    border: #32c28a solid 5px;
+    transition-duration: 0.7s;
+}
+
+.imagesHome:hover{
+    border: #32c28a 20px solid ;
+}
+
+#footerHome{
+    display: flex;
+    font-family: papyrus;
+    background-color: rgb(125, 181, 43);
+    font-size: 20px;
+    color: white;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 600px){
+    #headerHome{
+        font-size: 300%;
+    }
+    .imagesHome{
+        width: 85%;
+    }
+}

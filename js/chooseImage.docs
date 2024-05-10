@@ -1,0 +1,3 @@
+function chooseImage(img){
+    localStorage.setItem("chosenImage", img);
+}

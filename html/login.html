@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+  <embed src="/html/Kalimba.mp3" loop="true" autostart="true" width="2" height="0">
+  <img id="logo" src="../img/logo.png">
+  <!-- <img src="./img/עננים.png" > -->
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title login">Login Form</div>
+      <div class="title signup">Signup Form</div>
+    </div>
+
+    <!-- Start Form Container -->
+    <div class="form-container">
+      <div class="slide-controls">
+        <input type="radio" name="slider" id="login" checked>
+        <input type="radio" name="slider" id="signup">
+        <label for="login" class="slide login">Login</label>
+        <label for="signup" class="slide signup"> Signup</label>
+        <div class="slide-tab"></div>
+      </div>
+
+      <div class="form-inner">
+
+        <!-- Start Login Form -->
+        <form class="login" onsubmit="login(event)">
+          <div class="field">
+            <input id="login_email" type="text" placeholder="Email" required>
+          </div>
+          <div class="field">
+            <input id="login_password" type="password" placeholder="Password" required>
+          </div>
+          <div class="pass-link">
+          </div>
+          <div class="field">
+            <input type="submit" value="Login" >
+          </div>
+          <div class="signup-link">
+          </div>
+        </form>
+
+        <!-- Start Signup Form -->
+        <form action="#" class="signup" onsubmit="signUp(event)">
+          <div class="field">
+            <input id="signup_name" type="text" placeholder="User name" required>
+          </div>
+          <div class="field">
+            <input id="signup_email" type="email" placeholder="Email" required>
+          </div>
+          <div class="field">
+            <input id="signup_password" type="password" placeholder="Password" required>
+          </div>
+
+          <div class="field">
+            <input type="submit" value="Signup" >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <img id="jump-frog" src="../img/frog.png" alt="">
+
+</body>
+<script src="../js/login.js"></script>
+
+</html>

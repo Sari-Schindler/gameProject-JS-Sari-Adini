@@ -1,0 +1,180 @@
+//import {imgMatrix} from './imgArr.js';
+let imgMatrix = [
+    ["url('../img/frog1/1.png')", "url('../img/frog1/2.png')", "url('../img/frog1/3.png')", "url('../img/frog1/4.png')", "url('../img/frog1/5.png')",
+    "url('../img/frog1/6.png')", "url('../img/frog1/7.png')", "url('../img/frog1/8.png')", "url('')"],
+    ["url('../img/frog2/1.png')", "url('../img/frog2/2.png')", "url('../img/frog2/3.png')", "url('../img/frog2/4.png')", "url('../img/frog2/5.png')",
+    "url('./../img/frog2/6.png')", "url('../img/frog2/7.png')", "url('../img/frog2/8.png')", "url('')"],
+    ["url('../img/frog3/1.png')", "url('../img/frog3/2.png')", "url('../img/frog3/3.png')", "url('../img/frog3/4.png')", "url('../img/frog3/5.png')",
+    "url('../img/frog3/6.png')", "url('../img/frog3/7.png')", "url('../img/frog3/8.png')", "url('')"
+    ]];
+let sorted = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+let currentArr = [];
+let mix = [[1, 3, 5, 6, 4, 0, 7, 2, 8], [7, 3, 0, 5, 2, 1, 4, 6, 8], [7, 0, 8, 2, 1, 4, 3, 6, 5], [6, 7, 4, 0, 8, 1, 2, 3, 5]];
+let imageChosen=localStorage.getItem('chosenImage');
+let timerIsWork=false;
+function randArr() {
+    let rand = Math.floor(Math.random() * 4);
+    currentArr = mix[rand];
+}
+randArr();
+createBoard(currentArr);
+ function createBoard(arr) {
+    let index = 0;
+    let gameBoard =  document.getElementById("gameBoard");
+    let table =  document.createElement("table");
+     table.setAttribute("id", "tbl");
+    for (let i = 0; i < 3; i++) {
+        let tr =  document.createElement("tr");
+         tr.setAttribute("class", "tr");
+        for (let j = 0; j < 3; j++) {
+            let td =  document.createElement("td");
+             td.setAttribute("class", "td");
+            td.style.backgroundImage = imgMatrix[imageChosen][currentArr[index]];
+            index++;
+             tr.appendChild(td);
+        }
+         table.appendChild(tr);
+    }
+     gameBoard.appendChild(table);
+}
+let tmr;
+function timer(){
+    let timer=document.getElementById("second");
+    timer.innerText=50;
+    tmr=setInterval(reduceSeconds,1000);
+}
+
+function reduceSeconds(){
+    let timer=document.getElementById("second");
+    timer.innerText--;
+    checkTimer();
+}
+
+function checkTimer(){
+    let timer=document.getElementById("second");
+    if(timer.innerText==0){
+        message("timeOver");
+        clearInterval(tmr);
+    }
+}
+
+function moveCounter(){
+    document.getElementById("Moves").innerText++
+}
+
+document.onkeydown = checkKey;
+
+ function checkKey(e) {
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+         up();
+    }
+    else if (e.keyCode == '40') {
+         down();
+    }
+    else if (e.keyCode == '37') {
+         left();
+    }
+    else if (e.keyCode == '39') {
+         right();
+    }
+    if(timerIsWork==false){
+        timer();
+        timerIsWork=true;
+    }
+}
+
+ function up() {
+
+    for (let i = 0; i < 9; i++) {
+        if (currentArr[i] == sorted[8]) {
+            if (i != 6 && i != 7 && i != 8) {
+                swap(i, i + 3);
+                moveCounter();
+                createNewBoard();
+                return;
+            }
+        }
+    }
+}
+
+ function left() {
+    for (let i = 0; i < 9; i++) {
+        if (currentArr[i] == sorted[8]) {
+            if (i != 2 && i != 5 && i != 8) {
+                swap(i, i + 1);
+                moveCounter();
+                createNewBoard();
+                return;
+            }
+        }
+    }
+}
+
+ function right() {
+    for (let i = 0; i < 9; i++) {
+        if (currentArr[i] == sorted[8]) {
+            if (i != 0 && i != 3 && i != 6) {
+                swap(i, i - 1);
+                moveCounter();
+                createNewBoard();
+                return;
+            }
+        }
+    }
+}
+
+ function down() {
+    for (let i = 0; i < 9; i++) {
+        if (currentArr[i] == sorted[8]) {
+            if (i != 0 && i != 1 && i != 2) {
+                swap(i, i - 3);
+                moveCounter();
+                createNewBoard();
+                return;
+            }
+        }
+    }
+}
+
+function createNewBoard(){
+    let tbl=document.getElementById('tbl');
+    tbl.remove();
+    createBoard(currentArr);
+    checkWin();
+}
+
+function swap(index1, index2) {
+    let tmp = currentArr[index1];
+    currentArr[index1] = currentArr[index2];
+    currentArr[index2] = tmp;
+}
+
+function checkWin() {
+    for (let i = 0; i < 9; i++) {
+        if (currentArr[i] != sorted[i])
+            return ;
+    }
+    message("win");
+}
+
+function message(myMessage){
+    let messageTxt=document.getElementById("win_fall");
+    let tryAgain=document.getElementById("playAgain");
+    if(myMessage=="win"){
+     messageTxt.innerText="you won";
+     tryAgain.innerText="Play Again";
+    }
+    else{
+     messageTxt.innerText="Time over";
+     tryAgain.innerText="Try Again";
+    }
+    messageTxt.style.display="flex";
+    tryAgain.style.display="flex";
+}
+
+function signOut(){
+    localStorage.removeItem("currentUser")
+    window.location.href="./login.html";
+}

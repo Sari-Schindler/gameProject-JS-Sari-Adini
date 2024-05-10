@@ -1,0 +1,80 @@
+
+function inItLogin(){
+  const loginForm = document.querySelector("form.login");
+
+  const signupForm = document.querySelector("form.signup");
+  
+  const loginBtn = document.querySelector("label.login");
+  
+  const signupBtn = document.querySelector("label.signup");
+  
+  const loginText = document.querySelector(".title-text .login");
+  
+  const signupText = document.querySelector(".title-text .signup");
+  
+  signupBtn.onclick = () => {
+    loginForm.style.marginLeft = "-50%";
+    loginText.style.marginLeft = "-50%";
+  };
+  
+  loginBtn.onclick = () => {
+    loginForm.style.marginLeft = "0%";
+    loginText.style.marginLeft = "0%";
+  };
+}
+class user {
+  constructor(name, email, password) {
+    this.name = name,
+      this.email = email,
+      this.password = password
+  }
+};
+
+//  let jsonUsers=JSON.parse(users);
+function signUp(event) {
+  event.preventDefault();
+  const newName = document.getElementById("signup_name").value;
+  const newEmail = document.getElementById("signup_email").value;
+  const newPassword = document.getElementById("signup_password").value;
+  let newUser = new user(newName, newEmail, newPassword);
+  const allUsers = JSON.parse(localStorage.getItem('allUsers'))|| [];
+  if (allUsers == null || allUsers.length == 0) {
+    allUsers.push(newUser);
+    localStorage.setItem("allUsers" ,JSON.stringify(allUsers));
+    localStorage.setItem("currentUser",JSON.stringify(newUser));
+    window.open("./home.html","_self");
+  }
+  else {
+    const userExist = allUsers.find(user => user.password == newPassword);
+    if (!userExist) {
+      allUsers.push(newUser);
+      localStorage.setItem("allUsers" ,JSON.stringify(allUsers));
+      localStorage.setItem("currentUser",JSON.stringify(newUser));
+      window.open("./home.html","_self");
+  
+    }
+    else {
+      alert("This user already exists Please log in");
+    }
+
+  }
+}
+
+function login(event){
+  event.preventDefault();
+  const checkEmail = document.getElementById("login_email").value;
+  const checkPassword = document.getElementById("login_password").value;
+  const allUsers = JSON.parse(localStorage.getItem('allUsers'))|| [];
+  let userExist = allUsers.find(user => user.password == checkPassword&&user.email == checkEmail);
+  if(!userExist){
+    alert("This user does not yet exist please sign up");
+  }
+  else{
+    localStorage.setItem("currentUser", JSON.stringify(userExist));
+    window.open("./home.html", "_self");
+  }
+
+    
+}
+
+inItLogin();

@@ -1,0 +1,8 @@
+export let imgMatrix = [
+    ["url('../img/frog1/1.png')", "url('../img/frog1/2.png')", "url('../img/frog1/3.png')", "url('../img/frog1/4.png')", "url('../img/frog1/5.png')",
+    "url('../img/frog1/6.png')", "url('../img/frog1/7.png')", "url('../img/frog1/8.png')", "url('')"],
+    ["url('../img/frog2/1.png')", "url('../img/frog2/2.png')", "url('../img/frog2/3.png')", "url('../img/frog2/4.png')", "url('../img/frog2/5.png')",
+    "url('./../img/frog2/6.png')", "url('../img/frog2/7.png')", "url('../img/frog2/8.png')", "url('')"],
+    ["url('../img/frog3/1.png')", "url('../img/frog3/2.png')", "url('../img/frog3/3.png')", "url('../img/frog3/4.png')", "url('../img/frog3/5.png')",
+    "url('../img/frog3/6.png')", "url('../img/frog3/7.png')", "url('../img/frog3/8.png')", "url('')"
+    ]];

@@ -1,0 +1,44 @@
+body{
+    background-image: url("../img/background\ login.jpg") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+#instructionsDiv{
+    font-family: papyrus;
+    font-size: 500%;
+    color: green;
+    padding-right: 35%;
+    padding-left: 35%;
+}
+#instructionsP{
+    font-family: papyrus;
+    font-weight: bold;
+    font-size: 250%;
+    font-style: bold;
+    margin-left: 9%;
+    margin-right: 9%;
+}
+#letStartButton{
+    display: flex;
+    margin-left: 40%;
+    width: 20%;
+    justify-content: center;
+    color: white;
+    font-size: 200%;
+    font-family: papyrus;
+    background-color: rgb(88, 224, 88);
+}
+
+@media screen and (max-width: 600px){
+    #instructionsDiv{
+        font-size: 400%;
+    }
+    #instructionsP{
+        font-size: 150%;
+    }
+    #letStartButton{
+        font-size: 100%;
+    }
+}
